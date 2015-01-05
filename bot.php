@@ -1,6 +1,7 @@
 <?php
 // TinyBot - Written by EpicKitty (EpicnessTwo)
 set_time_limit(0); //Stops PHP killing the bot after 30 seconds
+error_reporting(0); //Stops the annoying errors everywhere
 
 //Vars
 
