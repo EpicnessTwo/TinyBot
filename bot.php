@@ -82,7 +82,8 @@ while(true)
         {   
             $to = explode(' '. $args);
             $to = $to[0]
-            $this->commandCmd($nick, $channel, $to, $args);
+            //$this->commandCmd($nick, $channel, $to, $args);
+            echo 'From: ' . $nick . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
         }
     }
 }
