@@ -31,11 +31,15 @@ $timer = 0;
 $count = count($chans) + 1;
   while($timer !== $count)
   {
-    fputs($irc,"JOIN ".$chans[$timer]."\n");
+    fputs($irc,"JOIN " . $chans[$timer] . "\n");
     $timer ++;
   }
 
-
+//Functions
+public function doPrivmsg($to, $say)
+{
+    fputs($irc, "PRIVMSG " . $to . " :" . $say);
+}
 //To be continued
 
 ?>
