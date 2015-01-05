@@ -69,13 +69,13 @@ while(true)
         
         if($explode[0] == "PING") //Ping respond
         {
-            fputs($socket, "PONG " . $explode[1] . "\n");
+            fputs($irc, "PONG " . $explode[1] . "\n");
         }
         
         $args = NULL;
         for($i = 4; $i < count($ex);$i++)
         {
-            $args .= $ex[$i] . ' ';
+            $args .= $explode[$i] . ' ';
         }
         
         if ($rawcmd[1] == ($config['prefix'] . "cmd"))
