@@ -44,9 +44,46 @@ public function doPrivmsg($to, $say)
 }
 public function commandCmd($from, $channel, $to, $args)
 {
-    //Yep
+    echo 'From: ' . $from . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
 }
 
 //To be continued
-
+//Main loop
+while(true)
+{   
+    while($data = fgets($socket))
+    {
+        echo $data;
+        flush();
+        
+        //Splitting input into sections
+        $explode = explode(' ', $data);
+        $rawcmd = explode(':', $explode[3]);
+        $command = explode('<br>', $rawcmd);
+        $channel = $explode[2];
+        $nick = explode('@', $explode[0]);
+        $nick = explode('!', $nick[0]);
+        $nick = explode(':', $nick[0]);
+        $hostmask = explode('!', $explode[0]);
+        $nick = $nick[1];
+        
+        if($explode[0] == "PING") //Ping respond
+        {
+            fputs($socket, "PONG " . $explode[1] . "\n");
+        }
+        
+        $args = NULL;
+        for($i = 4; $i < count($ex);$i++)
+        {
+            $args .= $ex[$i] . ' ';
+        }
+        
+        if ($rawcmd[1] == ($config['prefix'] . "cmd"))
+        {   
+            $to = explode(' '. $args);
+            $to = $to[0]
+            $this->commandCmd($nick, $channel, $to, $args);
+        }
+    }
+}
 ?>
