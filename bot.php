@@ -23,7 +23,7 @@ $chans = array(
 //Main
 
 $irc = fsockopen($config['serverip'], $config['port']);
-fputs($irc,"USER $config['user'] $config['user'] $config['user'] $config['user'] :$config['name']\n");
+fputs($irc,"USER " . $config['user'] . " * * :" . $config['name'] . "\n");
 fputs($irc,"NICK $config['nick']\n");
 
 //Channel joining loop
