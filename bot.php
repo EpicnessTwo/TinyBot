@@ -51,7 +51,7 @@ function commandCmd($from, $channel, $to, $args)
 //Main loop
 while(true)
 {   
-    while($data = fgets($socket))
+    while($data = fgets($irc))
     {
         echo $data;
         flush();
