@@ -38,11 +38,11 @@ $count = count($chans);
   }
 
 //Functions
-public function doPrivmsg($to, $say)
+function doPrivmsg($to, $say)
 {
     fputs($irc, "PRIVMSG " . $to . " :" . $say);
 }
-public function commandCmd($from, $channel, $to, $args)
+function commandCmd($from, $channel, $to, $args)
 {
     echo 'From: ' . $from . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
 }
@@ -82,7 +82,7 @@ while(true)
         {   
             $to = explode(' '. $args);
             $to = $to[0]
-            $this->commandCmd($nick, $channel, $to, $args);
+            commandCmd($nick, $channel, $to, $args);
         }
     }
 }
