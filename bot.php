@@ -29,7 +29,7 @@ fputs($irc,"NICK " . $config['nick'] . "\n");
 //Channel joining loop
 $timer = 0;
 $count = count($chans) + 1;
-  while($time !== $count)
+  while($timer !== $count)
   {
     fputs($irc,"JOIN ".$chans[$timer]."\n");
     $timer ++;
