@@ -29,6 +29,8 @@ $irc = fsockopen($config['serverip'], $config['port']);
 fputs($irc,"USER " . $config['user'] . " * * :" . $config['name'] . "\n");
 fputs($irc,"NICK " . $config['nick'] . "\n");
 
+function joinChannels()
+{
 //Channel joining loop
 $timer = 0;
 $count = count($chans);
@@ -37,6 +39,7 @@ $count = count($chans);
     fputs($irc,"JOIN " . $chans[$timer] . "\n");
     $timer ++;
   }
+}
 
 //Functions
 function doPrivmsg($to, $say)
@@ -45,7 +48,7 @@ function doPrivmsg($to, $say)
 }
 function commandCmd($from, $channel, $to, $args)
 {
-    echo 'From: ' . $from . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
+    echo 'From: ' . $from . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args . "\n";
 }
 
 //To be continued
@@ -84,7 +87,12 @@ while(true)
             $to = explode(' '. $args);
             $to = $to[0];
             commandCmd($nick, $channel, $to, $args);
-            echo 'From: ' . $nick . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
+            echo 'From: ' . $nick . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args . "\n";
+        } else
+        if ($rawcmd[1] == "End of /MOTD command.")
+        {
+            echo "MOTD End detected... Joining channels! \n";
+            joinChannels();
         }
     }
 }
