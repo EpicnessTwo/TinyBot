@@ -36,6 +36,7 @@ $timer = 0;
 $count = count($chans);
   while($timer !== $count)
   {
+    echo "Joining " . $chans[$timer] . "\n";
     fputs($irc,"JOIN " . $chans[$timer] . "\n");
     $timer ++;
   }
@@ -89,7 +90,7 @@ while(true)
             commandCmd($nick, $channel, $to, $args);
             echo 'From: ' . $nick . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args . "\n";
         } else
-        if ($rawcmd[1] == ("End of /MOTD command." || "~~"))
+        if ($rawcmd[1] == "End of /MOTD command.")
         {
             echo "MOTD End detected... Joining channels!\n";
             joinChannels();
