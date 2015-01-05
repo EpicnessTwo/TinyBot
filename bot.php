@@ -82,7 +82,7 @@ while(true)
         {   
             $to = explode(' '. $args);
             $to = $to[0]
-            commandCmd($nick, $channel, $to, $args);
+            $this->commandCmd($nick, $channel, $to, $args);
         }
     }
 }
