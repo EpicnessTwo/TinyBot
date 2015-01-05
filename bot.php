@@ -81,8 +81,8 @@ while(true)
         if ($rawcmd[1] == ($config['prefix'] . "cmd"))
         {   
             $to = explode(' '. $args);
-            $to = $to[0]
-            //$this->commandCmd($nick, $channel, $to, $args);
+            $to = $to[0];
+            commandCmd($nick, $channel, $to, $args);
             echo 'From: ' . $nick . " | Channel: " . $channel . " | To: " . $to . " | Args: " . $args;
         }
     }
