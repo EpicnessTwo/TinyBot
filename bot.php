@@ -15,6 +15,8 @@ $config['usebnc'] = true; //Will this be on a bnc?
 $config['serverid'] = 'serv1'; //To identify the server
 $config['bncpassword'] = 'enterpasshere'; //Password for bnc or server
 
+$config['owner'] = 'EpicnessTw@server.epicnesstwo.tk';
+
 $chans = array(
     '#Epic',
     '#EpicBots',
@@ -28,7 +30,7 @@ fputs($irc,"NICK " . $config['nick'] . "\n");
 
 //Channel joining loop
 $timer = 0;
-$count = count($chans) + 1;
+$count = count($chans);
   while($timer !== $count)
   {
     fputs($irc,"JOIN " . $chans[$timer] . "\n");
@@ -40,6 +42,11 @@ public function doPrivmsg($to, $say)
 {
     fputs($irc, "PRIVMSG " . $to . " :" . $say);
 }
+public function commandCmd($from, $channel, $to, $args)
+{
+    //Yep
+}
+
 //To be continued
 
 ?>
